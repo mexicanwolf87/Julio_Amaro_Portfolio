@@ -1,0 +1,29 @@
+#div1{
+    padding: 20px;
+    margin: 0%;
+
+    text-align: center;
+    border-radius: 20%;
+    
+}
+
+#img1{
+    border: solid rgb(182, 78, 78) ;
+    border-width: 0px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    border-width: 2rem;
+    
+}
+
+h1{
+    color: black;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+html{
+    font-size:  20px;
+}
+

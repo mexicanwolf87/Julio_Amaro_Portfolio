@@ -11,8 +11,8 @@
 <body>
 
     <H1 style="text-align: center; font-size: 50px;">Madison Window Products Price Form</H1>
-    <div style="text-align: center; background-color: green;height: 10px;">
-    </div><br><br><br>
+    <div style="text-align: center; background-color: green;height: 10px;"> </div>
+    <h2 style="text-align: center; font-size: 40px;">Customer information</h2>
 
 
 
@@ -21,16 +21,25 @@
     <label>Customer name</label> <input type="text" id="Customer-name">
     <label>Phone</label> <input type="text" id="Customer-phone">
     <label>Email</label> <input type="text" id="Customer-email">
-    <label>Date</label> <input type="date" id="Customer-email">
+    <label>Date</label> <input type="date" id="date">
+    <label>Address</label> <input type="text" id="Customer-email">
     <br><br><br><br>
+
+    <h2 style="text-align: center; font-size: 30px;">Items list</h2>
+    <p style="font-size: large; font-weight: bold; ">Add a new list item or delete items  using the buttons. When you are done please press submit form to generete the quote</p><br><br>
     <div id="formContainer">
       <!-- The dynamically added forms will appear here -->
     </div>
   </form>
 <div style=" height: 30px; text-align: center;; background-color: green; ">
   <button onclick="addForm()" style="margin-top: 5px;">Add new Item </button>
-  <button onclick="submitForms()">Submit form</button>
-</div>
+
+  <p style=></p>
+</div><br><br>
+<div style=" height: 30px; text-align: center;; background-color: green; ">
+    
+    <button onclick="submitForms()" style="margin-top: 5px;">Generate Quote</button>
+  </div>
 
   <script>
     let formCounter = 0;

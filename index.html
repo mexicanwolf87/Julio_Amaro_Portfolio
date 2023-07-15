@@ -1,22 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MWP Price Form</title>
+  <title>Dynamic Form</title>
+  <style>
+    .form-container {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
 
+    <H1 style="text-align: center; font-size: 50px;">Madison Window Products Price Form</H1>
+    <div style="text-align: center; background-color: green;height: 10px;">
+    </div><br><br><br>
 
-<H1 style="text-align: center;">Madison Window Products Price Form</H1>
-<form style="text-align: center;">
 
-    <label for="Qty"> QTY:</label>
+
+  <form id="allForms" style="text-align: center;">
+    <label>Customer number</label> <input type="text" id="Customer-number">
+    <label>Customer name</label> <input type="text" id="Customer-name">
+    <label>Phone</label> <input type="text" id="Customer-phone">
+    <label>Email</label> <input type="text" id="Customer-email">
+    <label>Date</label> <input type="date" id="Customer-email">
+    <br><br><br><br>
+    <div id="formContainer">
+      <!-- The dynamically added forms will appear here -->
+    </div>
+  </form>
+<div style=" height: 30px; text-align: center;; background-color: green; ">
+  <button onclick="addForm()" style="margin-top: 5px;">Add new Item </button>
+  <button onclick="submitForms()">Submit form</button>
+</div>
+
+  <script>
+    let formCounter = 0;
+
+    function addForm() {
+      formCounter++;
+
+      let newForm = document.createElement("div");
+      newForm.className = "form-container";
+      newForm.setAttribute('id', `form${formCounter}`); // Set a unique id for the form container
+
+      newForm.innerHTML = `
+      <label for="item${formCounter}"> Item ${formCounter} :</label>
+      <label for="Qty"> QTY:</label>
         <input style="width: 50px;" type="number" id="fname" name="fname">
         </select>
 
-    <label for="cars">Select Door or Window</label>
-        <select id="Door\Window" name="Door\Window">
+    <label for="door-windows${formCounter}">Door or window${formCounter}</label>
+        <select id="Door\Window${formCounter}" name="Door\Window${formCounter}">
         <option value="empty"></option>
         <option value="Door">Door</option>
         <option value="Window">Window</option>
@@ -25,8 +58,8 @@
         <label for="Width"> Width:</label>
             <input style="width: 50px;" type="number" id="width" name="width">
         
-        <label for="Width"> Width:</label>
-            <input style="width: 50px;" type="number" id="width" name="width">
+        <label for="Width"> High:</label>
+            <input style="width: 50px;" type="number" id="hihgh" name="high">
 
         <label for="Color"> Panel configuration:</label>
             <select id="config" name="config">
@@ -62,21 +95,41 @@
         <option value="LowE3">LowE3</option>
         <option value="Clear">Claer</option>
         </select>
-    
-    
+
+
+
 
         
 
+        <button onclick="removeForm(${formCounter})">Remove</button>
+        <br><br>
+      `;
 
-
-
-<br><br>
-    <input type="submit" value="Add row">
-    <input type="submit">
-
-
-</form>
+      document.getElementById("formContainer").appendChild(newForm);
+    }
     
-    
+    function removeForm(formNumber) {
+      let formToRemove = document.getElementById(`form${formNumber}`);
+      if (formToRemove) {
+        formToRemove.remove();
+      }
+    }
+
+    function submitForms() {
+      let forms = document.getElementById("allForms").getElementsByTagName("div");
+
+      for (let i = 0; i < forms.length; i++) {
+        let form = forms[i];
+        let name = form.querySelector(`input[name="name${i + 1}"]`).value;
+        let email = form.querySelector(`input[name="email${i + 1}"]`).value;
+        let message = form.querySelector(`textarea[name="message${i + 1}"]`).value;
+
+        console.log(`Form ${i + 1} - Name: ${name}, Email: ${email}, Message: ${message}`);
+      }
+      
+      document.getElementById("formContainer").innerHTML = "";
+      formCounter = 0;
+    }
+  </script>
 </body>
 </html>

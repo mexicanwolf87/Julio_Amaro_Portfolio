@@ -7,6 +7,7 @@
       margin-bottom: 10px;
     }
   </style>
+ 
 </head>
 <body>
 
@@ -53,57 +54,72 @@
 
       newForm.innerHTML = `
       <label for="item${formCounter}"> Item ${formCounter} :</label>
-      <label for="Qty"> QTY:</label>
-        <input style="width: 50px;" type="number" id="fname" name="fname">
+      <label for="Qty${formCounter}"> QTY:</label>
+        <input style="width: 50px;" type="number" id="fname${formCounter}" name="fname${formCounter}">
         </select>
 
     <label for="door-windows${formCounter}">Door or window${formCounter}</label>
         <select id="Door\Window${formCounter}" name="Door\Window${formCounter}">
-        <option value="empty"></option>
-        <option value="Door">Door</option>
-        <option value="Window">Window</option>
+        <option value="emptydoor-window${formCounter}"></option>
+        <option value="Door${formCounter}">Door</option>
+        <option value="Window${formCounter}">Window</option>
         </select>
     
-        <label for="Width"> Width:</label>
-            <input style="width: 50px;" type="number" id="width" name="width">
+        <label for="Width${formCounter}"> Width:</label>
+            <input style="width: 50px;" type="number" id="width${formCounter}" name="width${formCounter}">
         
-        <label for="Width"> High:</label>
-            <input style="width: 50px;" type="number" id="hihgh" name="high">
+        <label for="Width${formCounter}"> High:</label>
+            <input style="width: 50px;" type="number" id="hihgh${formCounter}" name="high${formCounter}">
 
-        <label for="Color"> Panel configuration:</label>
-            <select id="config" name="config">
-            <option value="empty"></option>
-            <option value="XO">XO</option>
-            <option value="OX">OX</option>
-            <option value="XOX">XOX</option>
-            <Option value="OXO">OXO</Option>
+        <label for="Color${formCounter}"> Panel configuration:</label>
+            <select id="config${formCounter}" name="config${formCounter}">
+            <option value="emptypanel${formCounter}"></option>
+            <option value="XO${formCounter}">XO</option>
+            <option value="OX${formCounter}">OX</option>
+            <option value="XOX${formCounter}">XOX</option>
+            <Option value="OXO${formCounter}">OXO</Option>
             </select>
 
     <label for="Color"> Color:</label>
-        <select id="Color" name="Color">
-        <option value="empty"></option>
-        <option value="White">White</option>
-        <option value="Brown">Brown</option>
-        <Option value="Gold">Gold</Option>
+        <select id="Color${formCounter}" name="Color${formCounter}">
+        <option value="emptycolor${formCounter}"></option>
+        <option value="White${formCounter}">White</option>
+        <option value="Brown${formCounter}">Brown</option>
+        <Option value="Gold${formCounter}">Gold</Option>
         </select>
 
-    <label for="Grid-selection">Grid</label>    
-        <input type="checkbox">
+    <label for="Grid-selection${formCounter}">Grid</label>    
+        <input type="checkbox" id="gridcheck${formCounter}">
 
-    <label for="Grid-pattern">Grid pattern</label>
-        <select id="Color" name="Color">
-        <option value="empty"></option>
-        <option value="2W x 2H">2W x 2H</option>
-        <option value="2W x 3H">W x 3H</option>
-        <Option value="Standard">Standard</Option>
+    <label for="Grid-pattern${formCounter}">Grid pattern</label>
+        <select id="Color${formCounter}" name="Color${formCounter}">
+        <option value="emptygrid${formCounter}"></option>
+        <option value="2W x 2H${formCounter}">2W x 2H</option>
+        <option value="2W x 3H${formCounter}">W x 3H</option>
+        <Option value="Standard${formCounter}">Standard</Option>
         </select>
 
-    <label for="Glass type"> Glass type</label>
-        <select id="glass-type" name="glass-type">
-        <option value="empty"></option>
-        <option value="LowE3">LowE3</option>
-        <option value="Clear">Claer</option>
+    <label for="Glass type${formCounter}"> Glass type</label>
+        <select id="glass-type${formCounter}" name="glass-type${formCounter}">
+        <option value="emptyglass${formCounter}"></option>
+        <option value="LowE3${formCounter}">LowE3</option>
+        <option value="Clear${formCounter}">Clear</option>
         </select>
+      
+    <label for="Series${formCounter}"> Series</label>
+        <select id="Series${formCounter}" name="Series${formCounter}">
+        <option value="empty-series${formCounter}"></option>
+        <option value="4800${formCounter}">4800</option>
+        <option value="4850${formCounter}">4850</option>
+        <option value="4855${formCounter}">4855</option>
+        </select>
+
+    <label for="Grid-selection${formCounter}">Notes:</label>    
+        <input type="text" id="Note${formCounter}">
+    
+    <label for="Price${formCounter}"> PRICE : $0    </label>
+
+    
 
 
 
@@ -139,6 +155,10 @@
       document.getElementById("formContainer").innerHTML = "";
       formCounter = 0;
     }
+
+    
+
   </script>
+  
 </body>
 </html>

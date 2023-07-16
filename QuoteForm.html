@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Form</title>
+  <style>
+    .form-container {
+      margin-bottom: 10px;
+    }
+  </style>
+ 
+</head>
+<body>
+
+    <H1 style="text-align: center; font-size: 50px;">Madison Window Products Price Form</H1>
+    <div style="text-align: center; background-color: green;height: 10px;"> </div>
+    <h2 style="text-align: center; font-size: 40px;">Customer information</h2>
+
+
+
+  <form id="allForms" style="text-align: center;">
+    <label>Customer number</label> <input type="text" id="Customer-number">
+    <label>Customer name</label> <input type="text" id="Customer-name">
+    <label>Phone</label> <input type="text" id="Customer-phone">
+    <label>Email</label> <input type="text" id="Customer-email">
+    <label>Date</label> <input type="date" id="date">
+    <label>Address</label> <input type="text" id="Customer-email">
+    <br><br><br><br>
+
+    <h2 style="text-align: center; font-size: 30px;">Items list</h2>
+    <p style="font-size: large; font-weight: bold; ">Add a new list item or delete items  using the buttons. When you are done please press submit form to generete the quote</p><br><br>
+    <div id="formContainer">
+      <!-- The dynamically added forms will appear here -->
+    </div>
+  </form>
+<div style=" height: 30px; text-align: center;; background-color: green; ">
+  <button onclick="addForm()" style="margin-top: 5px;">Add new Item </button>
+
+  <p style=></p>
+</div><br><br>
+<div style=" height: 30px; text-align: center;; background-color: green; ">
+    
+    <button onclick="submitForms()" style="margin-top: 5px;">Generate Quote</button>
+  </div>
+
+  <script>
+    let formCounter = 0;
+
+    function addForm() {
+      formCounter++;
+
+      let newForm = document.createElement("div");
+      newForm.className = "form-container";
+      newForm.setAttribute('id', `form${formCounter}`); // Set a unique id for the form container
+
+      newForm.innerHTML = `
+      <label for="item${formCounter}"> Item ${formCounter} :</label>
+      <label for="Qty${formCounter}"> QTY:</label>
+        <input style="width: 50px;" type="number" id="fname${formCounter}" name="fname${formCounter}">
+        </select>
+
+    <label for="door-windows${formCounter}">Door or window${formCounter}</label>
+        <select id="Door\Window${formCounter}" name="Door\Window${formCounter}">
+        <option value="emptydoor-window${formCounter}"></option>
+        <option value="Door${formCounter}">Door</option>
+        <option value="Window${formCounter}">Window</option>
+        </select>
+    
+        <label for="Width${formCounter}"> Width:</label>
+            <input style="width: 50px;" type="number" id="width${formCounter}" name="width${formCounter}">
+        
+        <label for="Width${formCounter}"> High:</label>
+            <input style="width: 50px;" type="number" id="hihgh${formCounter}" name="high${formCounter}">
+
+        <label for="Color${formCounter}"> Panel configuration:</label>
+            <select id="config${formCounter}" name="config${formCounter}">
+            <option value="emptypanel${formCounter}"></option>
+            <option value="XO${formCounter}">XO</option>
+            <option value="OX${formCounter}">OX</option>
+            <option value="XOX${formCounter}">XOX</option>
+            <Option value="OXO${formCounter}">OXO</Option>
+            </select>
+
+    <label for="Color"> Color:</label>
+        <select id="Color${formCounter}" name="Color${formCounter}">
+        <option value="emptycolor${formCounter}"></option>
+        <option value="White${formCounter}">White</option>
+        <option value="Brown${formCounter}">Brown</option>
+        <Option value="Gold${formCounter}">Gold</Option>
+        </select>
+
+    <label for="Grid-selection${formCounter}">Grid</label>    
+        <input type="checkbox" id="gridcheck${formCounter}">
+
+    <label for="Grid-pattern${formCounter}">Grid pattern</label>
+        <select id="Color${formCounter}" name="Color${formCounter}">
+        <option value="emptygrid${formCounter}"></option>
+        <option value="2W x 2H${formCounter}">2W x 2H</option>
+        <option value="2W x 3H${formCounter}">W x 3H</option>
+        <Option value="Standard${formCounter}">Standard</Option>
+        </select>
+
+    <label for="Glass type${formCounter}"> Glass type</label>
+        <select id="glass-type${formCounter}" name="glass-type${formCounter}">
+        <option value="emptyglass${formCounter}"></option>
+        <option value="LowE3${formCounter}">LowE3</option>
+        <option value="Clear${formCounter}">Clear</option>
+        </select>
+      
+    <label for="Series${formCounter}"> Series</label>
+        <select id="Series${formCounter}" name="Series${formCounter}">
+        <option value="empty-series${formCounter}"></option>
+        <option value="4800${formCounter}">4800</option>
+        <option value="4850${formCounter}">4850</option>
+        <option value="4855${formCounter}">4855</option>
+        </select>
+
+    <label for="Grid-selection${formCounter}">Notes:</label>    
+        <input type="text" id="Note${formCounter}">
+    
+    <label for="Price${formCounter}"> PRICE : $0    </label>
+
+    
+
+
+
+
+        
+
+        <button onclick="removeForm(${formCounter})">Remove</button>
+        <br><br>
+      `;
+
+      document.getElementById("formContainer").appendChild(newForm);
+    }
+    
+    function removeForm(formNumber) {
+      let formToRemove = document.getElementById(`form${formNumber}`);
+      if (formToRemove) {
+        formToRemove.remove();
+      }
+    }
+
+    function submitForms() {
+      let forms = document.getElementById("allForms").getElementsByTagName("div");
+
+      for (let i = 0; i < forms.length; i++) {
+        let form = forms[i];
+        let name = form.querySelector(`input[name="name${i + 1}"]`).value;
+        let email = form.querySelector(`input[name="email${i + 1}"]`).value;
+        let message = form.querySelector(`textarea[name="message${i + 1}"]`).value;
+
+        console.log(`Form ${i + 1} - Name: ${name}, Email: ${email}, Message: ${message}`);
+      }
+      
+      document.getElementById("formContainer").innerHTML = "";
+      formCounter = 0;
+    }
+
+    
+
+  </script>
+  
+</body>
+</html>
